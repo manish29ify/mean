@@ -1,0 +1,35 @@
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+html,
+body,
+.container {
+    min-height: 100vh;
+    height: auto;
+}
+
+.nav-custom {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+li.nav-item {
+    margin: 0 15px;
+}
+
+
+.description {
+    width: 160px !important;
+    text-overflow: ellipsis !important;
+    /* overflow-wrap: break-word; */
+    overflow: hidden;
+    height: 75px !important;
+}

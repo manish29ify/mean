@@ -1,0 +1,164 @@
+<div class="row mt-5">
+
+    <div class="col-12 mb-5">
+        <button type="button" class="btn btn-primary float-right" (click)="modalService.show(template)">Add New
+            Product</button>
+
+        <ng-template #template>
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Add Product</h4>
+                <button type="button" class="btn-close close pull-right" aria-label="Close"
+                    (click)="modalService.hide()">
+                    <span aria-hidden="true" class="visually-hidden">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addForm" (ngSubmit)="addProduct()">
+                    <div class="input-group mb-3">
+                        <input formControlName="name" type="text" class="form-control" placeholder="Name"
+                            value="sdsadsad">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <textarea class="form-control" value="sdsadsad" placeholder="Description"
+                            formControlName="description"></textarea>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input formControlName="price" value="11" type="text" class="form-control" placeholder="Price">
+                    </div>
+
+
+                    <div class="input-group mb-3">
+                        <select class="custom-select" [value]="'1'" formControlName="category">
+                            <option selected>Choose Category...</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-group mb-3">
+                        <div class="custom-file1">
+                            <input type="file" class="custom-file-input1" id="inputGroupFile04"
+                                (change)="getFile($event)">
+                            <label class="custom-file-label1" for="inputGroupFile04">Choose file</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" [disabled]="addForm.invalid" class="btn btn-primary">Submit</button>
+
+                </form>
+            </div>
+        </ng-template>
+    </div>
+
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col-2">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of (productList$ | async)?.data">
+
+                    <td>{{item.name}}</td>
+                    <td>
+                        <div class="description">
+                            {{item.description}}
+                        </div>
+                    </td>
+                    <td>{{item.category}}</td>
+                    <td>{{item.price}}</td>
+                    <td><img [src]="item.image" width="75"></td>
+                    <th scope="row">
+                        <button type="button" (click)="deleteProduct(item._id)"
+                            class="btn btn-outline-danger">Delete</button>
+                    </th>
+                </tr>
+
+            </tbody>
+        </table>
+        <tabset>
+
+
+
+
+            <tab heading="Reactive Form">
+                <form [formGroup]="loginForm" (ngSubmit)="submit()">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input formControlName="name" type="email" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input formControlName="password" type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <ng-container formGroupName="address">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">House No</label>
+                            <input formControlName="houseNo" type="text" class="form-control" placeholder="House No">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Street</label>
+                            <input formControlName="street" type="text" class="form-control" placeholder="Street">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Locality</label>
+                            <input formControlName="locality" type="text" class="form-control" placeholder="Locality">
+                        </div>
+                    </ng-container>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </tab>
+
+
+
+            <tab heading="Template Form">
+                <form #userForm="ngForm" (ngSubmit)="submitUser(userForm)">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name="name" type="email" ngModel class="form-control" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input name="password" type="password" class="form-control" ngModel placeholder="Password">
+                    </div>
+                    <ng-container ngModelGroup="address">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">House No</label>
+                            <input name="houseNo" ngModel type="text" class="form-control" placeholder="House No">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Street</label>
+                            <input name="street" ngModel type="text" class="form-control" placeholder="Street">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Locality</label>
+                            <input name="locality" ngModel type="text" class="form-control" placeholder="Locality">
+                        </div>
+                    </ng-container>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </tab>
+        </tabset>
+    </div>
+</div>

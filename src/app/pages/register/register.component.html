@@ -1,0 +1,40 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="card bg-dark text-white" style="width: 25rem;border-radius: 1rem;">
+                <div class="card-body py-5 px-5 text-center">
+
+                    <form (ngSubmit)="onSubmit(form)" #form="ngForm" autocomplete="off">
+                        <div class="mb-2 mt-2 pb-3">
+
+                            <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+                            <p class="text-white-50 mb-4">Please enter your details!</p>
+
+                            <div class="form-outline form-white mb-4">
+                                <input type="text" name="name" placeholder="Name" class="form-control form-control-lg"
+                                    ngModel autocomplete="off" />
+                            </div>
+
+                            <div class="form-outline form-white mb-4">
+                                <input type="text" name="email" class="form-control form-control-lg" ngModel
+                                    placeholder="gfgfdg" autocomplete="new-password" />
+                            </div>
+
+                            <div class="form-outline form-white mb-4">
+                                <input type="password" name="password" class="form-control form-control-lg" ngModel />
+                            </div>
+                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
+                        </div>
+                    </form>
+                    <div>
+                        <p class="mb-0">Already have an account? <a routerLink="/login"
+                                class="text-white-50 fw-bold">Sign
+                                In</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

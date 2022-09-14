@@ -1,0 +1,16 @@
+{
+    "ignore": [
+        ".git",
+        "node_modules/**/node_modules",
+        "public",
+        "view",
+        "src",
+        "README"
+    ],
+    "watch": [
+        "src/",
+        "routes/",
+        "app.js"
+    ],
+    "ext": "js,json,ts"
+}

@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-6">
+        <ng-container *ngTemplateOutlet="greet"></ng-container>
+        <hr>
+        <ng-container *ngTemplateOutlet="eng; context: myContext"></ng-container>
+        <hr>
+        <ng-container *ngTemplateOutlet="svk; context: myContext"></ng-container>
+        <hr>
+        <ng-template #greet><span>Hello</span></ng-template>
+        <ng-template #eng let-name="name"><span>Hello {{name}}!</span></ng-template>
+        <ng-template #svk let-person="localSk"><span>Ahoj {{person}}!</span></ng-template>
+        <div>{{"Manish" | mypipe}}</div>
+        <button appDir>Manish Button</button>
+
+        <button #sibTitle>Change Sibling Title</button>
+    </div>
+
+    <div class="col-6">
+        <button (click)="showChild=!showChild">Toggle</button>
+        <p #content>Content 1</p>
+        <p #content>Content 2</p>
+        <p #content>Content 3</p>
+
+        <app-child *ngIf="showChild" #child [compName]="compName">
+            <title>This is Title</title>
+            <h5 class="name">Manish</h5>
+            <h5 #middlename id="middlename">Kumar</h5>
+            <h6 class="surname">Sharma</h6>
+
+            <h6 username>manishsharma29</h6>
+
+        </app-child>
+    </div>
+</div>
