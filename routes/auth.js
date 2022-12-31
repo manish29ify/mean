@@ -5,7 +5,32 @@ const Users = require("../models/user")
 const router = express.Router()
 
 
-
+/**
+ * @swagger
+ * tags:
+ *   name: Books
+ *   description: The books managing API
+ * /books:
+ *   post:
+ *     summary: Create a new book
+ *     tags: [Books]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'
+ *     responses:
+ *       200:
+ *         description: The created book.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       500:
+ *         description: Some server error
+ *
+ */
 router.get('/', (req, res) => {
     // res.send('GET request to the homepage')
     let jwtSecretKey = process.env.JWT_SECRET_KEY;
